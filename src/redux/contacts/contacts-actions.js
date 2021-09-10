@@ -14,6 +14,17 @@ const deleteContact = createAction("delete_Contact");
 
 const filters = createAction("filter_contact");
 
-const allActions = { formSubmit, deleteContact, filters };
+const fetchContactRequest = createAction("/contacts/fetchContactRequest");
+const fetchContactSucess = createAction("/contacts/fetchContactSucess");
+const fetchContactError = createAction("/contacts/fetchContactError");
+
+const allActions = {
+  formSubmit,
+  deleteContact,
+  filters,
+  fetchContactRequest,
+  fetchContactSucess,
+  fetchContactError,
+};
 
 export default allActions;

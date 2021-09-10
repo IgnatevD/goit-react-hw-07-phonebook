@@ -10,24 +10,11 @@ import {
 } from "redux-persist";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import allReducer from "../redux/contacts/contacs-reduser";
-
-// const contactsPersistConfig = {
-//   key: "contacts",
-//   storage,
-//   blacklist: ["filters"],
-// };
-
-// const persistRedusers = persistReducer(
-//   contactsPersistConfig,
-//   combineReducers({
-//     contacts: allReducer.reducerContats,
-//     filters: allReducer.reducerFilter,
-//   })
-// );
+import contactsReduscer from "./contacts/contacts-reduser-api";
 
 const store = configureStore({
   reducer: {
-    contacts: allReducer.reducerContats,
+    contacts: contactsReduscer,
     filters: allReducer.reducerFilter,
   },
   middleware: getDefaultMiddleware({
@@ -36,17 +23,5 @@ const store = configureStore({
     },
   }),
 });
-
-// const store = configureStore({
-//   reducer: persistRedusers,
-//   middleware: getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }),
-// });
-
-// const persistor = persistStore(store);
-// const allStore = { store, persistor };
 
 export default store;
