@@ -1,3 +1,9 @@
 {
-  "contacts": [{ "id": "1", "name": "dwewww", "number": "099636767" }]
+  "contacts": [
+    {
+      "name": "ghb",
+      "number": "+380996367677",
+      "id": 1
+    }
+  ]
 }

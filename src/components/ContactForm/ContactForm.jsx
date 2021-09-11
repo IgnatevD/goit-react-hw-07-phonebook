@@ -1,11 +1,11 @@
 /** @format */
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import PropTypes from "prop-types";
 import s from "../ContactForm/ContactForm.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import allActions from "../../redux/contacts/contacts-actions";
+import { useDispatch } from "react-redux";
+// import allActions from "../../redux/contacts/contacts-actions";
 import * as contactsOperation from "../../redux/contacts/contacts-operation";
 
 const ContactForm = () => {
@@ -16,10 +16,9 @@ const ContactForm = () => {
   const numberInputId = uuidv4();
 
   const dispatch = useDispatch();
-  const onSubmit = (name, number) =>
-    dispatch(allActions.formSubmit({ name, number }));
 
-  // useEffect(() => dispatch(contactsOperation.contactsFetch()), []);
+  const onSubmit = (name, number) =>
+    dispatch(contactsOperation.contactsFetchPost({ name, number }));
 
   const handelSubmit = (e) => {
     e.preventDefault();

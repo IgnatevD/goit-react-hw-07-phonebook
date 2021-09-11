@@ -15,17 +15,6 @@ export async function fetchConactsPost(obj) {
 }
 
 export async function fetchConactsDelete(id) {
-  const { data } = await axios.delete(`/contacts ${id}`);
+  const { data } = await axios.delete(`/contacts/${id}`);
   return data;
 }
-
-// export async function fetchConactById() {
-//   await axios({
-//     method: `post`,
-//     url: "/user/12345",
-//     data: {
-//       firstName: "Fred",
-//       lastName: "Flintstone",
-//     },
-//   });
-// }
