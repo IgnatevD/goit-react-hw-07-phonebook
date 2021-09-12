@@ -15,7 +15,7 @@ const Filter = () => {
   return (
     <div className={s.filterContener}>
       <label htmlFor={idFilter} className={s.labelFilter}>
-        Поиск контактов по имени и фамили
+        Поиск контактов по имени и фамилии
       </label>
       <input
         id={idFilter}

@@ -23,12 +23,13 @@ const entris = createReducer([], {
   [contactsFetch.fulfilled]: (_, { payload }) => {
     return payload;
   },
+
   [contactsFetchPost.fulfilled]: (state, { payload }) => {
     return fnNewListContacts(state, { payload });
   },
 
   [contactsFetchDelete.fulfilled]: (state, { payload }) => {
-    return state.filter(({ id }) => id !== payload);
+    return payload;
   },
 });
 

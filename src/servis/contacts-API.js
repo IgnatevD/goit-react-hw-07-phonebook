@@ -15,6 +15,7 @@ export async function fetchConactsPost(obj) {
 }
 
 export async function fetchConactsDelete(id) {
-  const { data } = await axios.delete(`/contacts/${id}`);
+  await axios.delete(`/contacts/${id}`);
+  const { data } = await axios.get(`/contacts`);
   return data;
 }
