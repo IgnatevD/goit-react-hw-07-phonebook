@@ -2,14 +2,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import * as conactsAPI from "../../servis/contacts-API";
 
-let allContacts = [];
-
 export const contactsFetch = createAsyncThunk(
   "/contacts/fetchContact",
   async (_, { rejectWithValue }) => {
     try {
       const contacts = await conactsAPI.fetchConacts();
-      allContacts = [...contacts];
       return contacts;
     } catch (error) {
       return rejectWithValue(error);
@@ -19,19 +16,18 @@ export const contactsFetch = createAsyncThunk(
 
 export const contactsFetchPost = createAsyncThunk(
   "/contacts/contactsFetchPost",
-  async (newContact, { rejectWithValue }) => {
+  async (newContact, { rejectWithValue, getState }) => {
     try {
-      const arryFindName = allContacts?.find(
+      const arryFindName = getState().contacts.entris.find(
         (contact) =>
           contact?.name?.toLowerCase() === newContact.name.toLowerCase()
       );
       if (arryFindName) {
         alert(`Ошибка, контакт с данным именем ${newContact.name} уже есть`);
-        return allContacts;
+        return null;
       }
 
       const contacts = await conactsAPI.fetchConactsPost(newContact);
-      allContacts = [...allContacts, contacts];
       return contacts;
     } catch (error) {
       return rejectWithValue(error);
@@ -43,9 +39,8 @@ export const contactsFetchDelete = createAsyncThunk(
   "/contacts/contactsFetchDelete",
   async (id, { rejectWithValue }) => {
     try {
-      const contacts = await conactsAPI.fetchConactsDelete(id);
-      allContacts = [...contacts];
-      return contacts;
+      await conactsAPI.fetchConactsDelete(id);
+      return id;
     } catch (error) {
       return rejectWithValue(error);
     }

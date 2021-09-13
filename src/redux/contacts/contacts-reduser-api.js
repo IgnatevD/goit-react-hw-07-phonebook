@@ -14,12 +14,11 @@ const entris = createReducer([], {
   },
 
   [contactsFetchPost.fulfilled]: (state, { payload }) => {
-    return [...state, payload];
+    return payload ? [...state, payload] : state;
   },
 
-  [contactsFetchDelete.fulfilled]: (_, { payload }) => {
-    return payload;
-  },
+  [contactsFetchDelete.fulfilled]: (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
 });
 
 const isLoding = createReducer(false, {
