@@ -1,23 +1,11 @@
 /** @format */
 
 import { createReducer, combineReducers } from "@reduxjs/toolkit";
-
 import {
   contactsFetch,
   contactsFetchDelete,
   contactsFetchPost,
 } from "./contacts-operation";
-
-const fnNewListContacts = (state, { payload }) => {
-  const arryFindName = state.find(
-    (contact) => contact.name.toLowerCase() === payload.name.toLowerCase()
-  );
-  if (arryFindName) {
-    alert(`Ошибка, контакт с данным именем ${payload.name} уже есть`);
-    return state;
-  }
-  return [...state, payload];
-};
 
 const entris = createReducer([], {
   [contactsFetch.fulfilled]: (_, { payload }) => {
@@ -25,10 +13,10 @@ const entris = createReducer([], {
   },
 
   [contactsFetchPost.fulfilled]: (state, { payload }) => {
-    return fnNewListContacts(state, { payload });
+    return [...state, payload];
   },
 
-  [contactsFetchDelete.fulfilled]: (state, { payload }) => {
+  [contactsFetchDelete.fulfilled]: (_, { payload }) => {
     return payload;
   },
 });
