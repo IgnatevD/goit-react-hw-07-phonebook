@@ -31,6 +31,7 @@ export const contactsFetchPost = createAsyncThunk(
       }
 
       const contacts = await conactsAPI.fetchConactsPost(newContact);
+      allContacts = [...allContacts, contacts];
       return contacts;
     } catch (error) {
       return rejectWithValue(error);

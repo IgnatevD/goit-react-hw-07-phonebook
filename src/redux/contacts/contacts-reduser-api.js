@@ -1,12 +1,12 @@
 /** @format */
 
 import { createReducer, combineReducers } from "@reduxjs/toolkit";
+import allActions from "./contacts-actions";
 import {
   contactsFetch,
   contactsFetchDelete,
   contactsFetchPost,
 } from "./contacts-operation";
-import allActions from "./contacts-actions";
 
 const entris = createReducer([], {
   [contactsFetch.fulfilled]: (_, { payload }) => {
