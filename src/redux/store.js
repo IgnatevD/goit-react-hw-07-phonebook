@@ -9,12 +9,11 @@ import {
   REGISTER,
 } from "redux-persist";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import allReducer from "../redux/contacts/contacs-reduser";
-import contactsReduscer from "./contacts/contacts-reduser-api";
+import allReducer from "./contacts/contacts-reduser-api";
 
 const store = configureStore({
   reducer: {
-    contacts: contactsReduscer,
+    contacts: allReducer.contactsReduscer,
     filters: allReducer.reducerFilter,
   },
   middleware: getDefaultMiddleware({

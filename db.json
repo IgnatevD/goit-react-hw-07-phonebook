@@ -1,3 +1,14 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "name": "Rosie Simpson",
+      "number": "+380996367677",
+      "id": 1
+    },
+    {
+      "name": "Rosie Simpsonddsff",
+      "number": "+380996367677",
+      "id": 2
+    }
+  ]
 }

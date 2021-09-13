@@ -6,6 +6,7 @@ import {
   contactsFetchDelete,
   contactsFetchPost,
 } from "./contacts-operation";
+import allActions from "./contacts-actions";
 
 const entris = createReducer([], {
   [contactsFetch.fulfilled]: (_, { payload }) => {
@@ -46,10 +47,16 @@ const error = createReducer(null, {
   [contactsFetchDelete.fulfilled]: () => null,
 });
 
+const reducerFilter = createReducer("", {
+  [allActions.filters]: (_, { payload }) => payload,
+});
+
 const contactsReduscer = combineReducers({
   entris,
   isLoding,
   error,
 });
 
-export default contactsReduscer;
+const allReducer = { contactsReduscer, reducerFilter };
+
+export default allReducer;
